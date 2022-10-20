@@ -1,5 +1,7 @@
 import csv
+
 csvpath = "Resources\election_data.csv"
+
 # dictionary with candidates as keys and votes as values
 candidates = dict()
 
@@ -9,6 +11,7 @@ with open("Resources\election_data.csv", mode="r") as csv_file:
     next(elections_data) # skip the header
     for row in elections_data: # iterate over all rows
         candidate = row[2] # candidate name
+        
         # if candidate name is not in the dictionary, update the dictionary 
         if candidate not in candidates.keys():
             candidates.update({candidate:0})
@@ -22,15 +25,28 @@ winner = max(candidates, key=lambda k: candidates[k])
 # write results
 file_to_output = "resultsPoll.txt"
 
+#Print
+("Election Results + \n")
+print("-------------------------\n")
+print("Total Votes:" + str(total_votes) + "\n")
+print("-------------------------\n")
+for candidate, votes in candidates.items():
+ votes_percent = 100*votes/total_votes
+ print("{0:s}:{1: 2.3f}% ({2})  \n".format(candidate, votes_percent, votes))
+print("-------------------------\n")
+print("Winner:"  + winner + "\n")
+print("-------------------------\n")
+
+
 with open(file_to_output, "w") as txt_file:
-    txt_file.write("Election Results\n")
+    txt_file.write("Election Results  \n")
     txt_file.write("-------------------------\n")
-    txt_file.write("Total Votes:", total_votes, "\n")
+    txt_file.write("Total Votes:" + str(total_votes) + "\n")
     txt_file.write("-------------------------\n")
     for candidate, votes in candidates.items():
         votes_percent = 100*votes/total_votes
-        txt_file.write("{0:s}:{1: 2.3f}% ({2})\n".format(candidate, votes_percent, votes))
+        txt_file.write("{0:s}:{1: 2.3f}% ({2})  \n".format(candidate, votes_percent, votes))
     txt_file.write("-------------------------\n")
-    txt_file.write("Winner:", winner, "\n")
+    txt_file.write("Winner:" + winner + "\n")
     txt_file.write("-------------------------\n")
 

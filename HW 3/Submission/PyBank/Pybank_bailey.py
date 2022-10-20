@@ -68,7 +68,7 @@ print(f"Average Change: ${str(round(avg_change,2))}")
 print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})")
 print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
 
-#Exporing to .txt file
+#Exporting to .txt file
 output = open("output.txt", "w")
 
 line1 = "Financial Analysis"
