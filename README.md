@@ -1,2 +1,0 @@
-# SMU-Homework
-Homework
